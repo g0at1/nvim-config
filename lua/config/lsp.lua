@@ -1,0 +1,60 @@
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+require("mason").setup()
+
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    "lua_ls",
+    "ts_ls",
+    "jdtls",
+    "omnisharp",
+  },
+})
+
+-- Lua
+vim.lsp.config("lua_ls", {
+  capabilities = capabilities,
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+    },
+  },
+})
+vim.lsp.enable("lua_ls")
+
+-- TypeScript
+vim.lsp.config("ts_ls", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("ts_ls")
+
+-- Java
+vim.lsp.config("jdtls", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("jdtls")
+
+-- C#
+vim.lsp.config("omnisharp", {
+  capabilities = capabilities,
+  cmd = { "omnisharp" },
+})
+vim.lsp.enable("omnisharp")
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(event)
+    local opts = { buffer = event.buf }
+
+    vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+    vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+    vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
+
+    vim.keymap.set("n", "<leader>f", function()
+      vim.lsp.buf.format({ async = true })
+    end, opts)
+  end,
+})
