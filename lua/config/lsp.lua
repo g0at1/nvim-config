@@ -6,7 +6,6 @@ require("mason-lspconfig").setup({
   ensure_installed = {
     "lua_ls",
     "ts_ls",
-    "jdtls",
     "omnisharp",
   },
 })
@@ -29,12 +28,6 @@ vim.lsp.config("ts_ls", {
   capabilities = capabilities,
 })
 vim.lsp.enable("ts_ls")
-
--- Java
-vim.lsp.config("jdtls", {
-  capabilities = capabilities,
-})
-vim.lsp.enable("jdtls")
 
 -- C#
 vim.lsp.config("omnisharp", {

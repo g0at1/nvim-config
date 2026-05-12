@@ -14,12 +14,3 @@ vim.opt.cmdheight = 0
 vim.opt.cursorline = true
 vim.opt.signcolumn = "yes"
 vim.opt.guicursor = ""
-
-vim.api.nvim_create_autocmd("ColorScheme", {
-  callback = function()
-    vim.cmd.highlight("Normal guibg=NONE ctermbg=NONE")
-    vim.cmd.highlight("NormalNC guibg=NONE ctermbg=NONE")
-    vim.cmd.highlight("EndOfBuffer guibg=NONE")
-    vim.cmd.highlight("SignColumn guibg=NONE")
-  end,
-})
