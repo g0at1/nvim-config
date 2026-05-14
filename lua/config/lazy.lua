@@ -174,4 +174,12 @@ require("lazy").setup({
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  {
+    'nvimdev/dashboard-nvim',
+    event = 'VimEnter',
+    config = function()
+      require("dashboard").setup(require("plugins.dashboard-config"))
+    end,
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
 })
