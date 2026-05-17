@@ -23,11 +23,11 @@ require("lazy").setup({
 	},
 
 	{
-		"blazkowolf/gruber-darker.nvim",
+		"aktersnurra/no-clown-fiesta.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
-			vim.cmd.colorscheme("gruber-darker")
+			vim.cmd.colorscheme("no-clown-fiesta")
 		end,
 	},
 
