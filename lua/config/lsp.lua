@@ -7,6 +7,9 @@ require("mason-lspconfig").setup({
     "lua_ls",
     "ts_ls",
     "omnisharp",
+    "rust_analyzer",
+    "sourcekit",
+    "pyright",
   },
 })
 
@@ -35,6 +38,24 @@ vim.lsp.config("omnisharp", {
   cmd = { "omnisharp" },
 })
 vim.lsp.enable("omnisharp")
+
+-- Rust
+vim.lsp.config("rust_analyzer", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("rust_analyzer")
+
+-- Swift
+vim.lsp.config("sourcekit", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("sourcekit")
+
+-- Python
+vim.lsp.config("pyright", {
+  capabilities = capabilities,
+})
+vim.lsp.enable("pyright")
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
