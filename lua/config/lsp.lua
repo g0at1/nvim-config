@@ -10,6 +10,7 @@ require("mason-lspconfig").setup({
     "rust_analyzer",
     "sourcekit",
     "pyright",
+    "clangd",
   },
 })
 
@@ -56,6 +57,17 @@ vim.lsp.config("pyright", {
   capabilities = capabilities,
 })
 vim.lsp.enable("pyright")
+
+-- C / C++
+vim.lsp.config("clangd", {
+  capabilities = capabilities,
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+  },
+})
+vim.lsp.enable("clangd")
 
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
